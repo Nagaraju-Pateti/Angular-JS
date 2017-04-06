@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <title>Angular Module</title>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myController">
+<span>{{person.firstname+' '+person.lastname}}</span>
+<my-first-directive></my-first-directive>
+    </div>
+    <script>
+var myApp=angular.module("myApp",[]);
+myApp.controller("myController",function($scope){
+$scope.person={firstname:'Nagaraju',lastname:'Pateti'};
+
+});
+myApp.directive("myFirstDirective",function(){
+return{
+    template:"<b>this is your first directive in angular js.</b>"
+}
+});
+    </script>
+</body>
+
+</html>
