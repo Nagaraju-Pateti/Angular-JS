@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AngularJS Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="">
+        <div style="border:solid 1px black">
+            <p>Name:<input type="text" ng-model="name"></p>
+            <h1>Hello! welcome to angularjs: {{name}}</h1>
+        </div>
+        <div style="border:solid 1px black;margin-Top:2px">
+            <h2>ng-bind Example</h2>
+            <!--
+        ==>ng-bind the bind the value to html from the application data
+        ==>ng-model binds the  html elements value to application data (to specified variable name of the application data)
+    -->
+            <p>Enter Address: <input type="text" ng-model="address"></p>
+            <h1>Address is: <span ng-bind="address"></span></h1>
+        </div>
+
+        <div style="border:solid 1px black;margin-Top:2px">
+            <!--ng-init is used intialize the AngularJS application variables</h2>-->
+            <h2>ng-init Example</h2>
+            <p ng-init="firstname='john'"> </p>
+            <p ng-bind="firstname"></p>
+        </div>
+     <div style="border:solid 1px black;margin-Top:2px">
+         <p>My first expression in angular js {{5+5}}</p>
+     </div>
+     <div style="border:solid 1px black;margin-Top:2px">
+         <!--getting the angular js application variables value using the expressions-->
+         <h1>Getting angularjs application variable values using expression</h1>
+         <p>Enter Name: <input type="text" ng-model="names"></p>
+         <p>Name is : {{names}}</p>
+     </div>
+    </div>
+</body>
+
+</html>
