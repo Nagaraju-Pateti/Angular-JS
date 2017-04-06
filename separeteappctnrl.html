@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Separate JS for app and controller</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp"  ng-controller="myController">
+<span>{{person.firstname+' '+person.lastname}}</span>
+<my-directive-with-input></my-directive-with-input>
+    </div>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/controller.js"></script>
+    <script src="Scripts/directive.js"></script>
+</body>
+</html>
