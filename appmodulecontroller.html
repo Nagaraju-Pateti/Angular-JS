@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>app module controller</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+    <div style="border:solid 1px black" ng-app="myapp" ng-controller="mycontroller">
+        <div style="padding:5%">
+            <h2> Example for the how to delcare the app and controller in the angular js and using controller values in html </h2>
+<p><span>FirstName from the conrroller :{{firstname}}</span></p>
+
+        <p><span>LastName from the conrroller :{{lastname}}</span></p>
+<p>FirstName from the conrroller using ngModel :<input  type="text" ng-model="firstname +' '+ lastname"></span></p>
+       <span>Enter FirstName<input type="text" ng-model="firstname"></span>
+       <br>
+       <span>Enter FirstName<input type="text" ng-model="lastname"></span>
+       <br>
+       <p>FullName: <span>{{firstname+' '+lastname}}</span></p>
+        </div>
+
+    </div>
+    <script>
+        /* ng-app defines the Angular js application
+ng-controller define the angular js controller
+ module is used to define the angular  js applications
+ controller controls the angularjs application
+*/
+
+        var myApp = angular.module("myapp", [])
+        myApp.controller("mycontroller", function ($scope) {
+            $scope.firstname = "Nagaraju";
+            $scope.lastname = "Pateti";
+
+        });
+
+    </script>
+</body>
+
+</html>
