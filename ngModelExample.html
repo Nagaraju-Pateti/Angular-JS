@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ngModelExample</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body >
+<form ng-app="" name="myForm" ng-init="myText='wasraju@gmail.com'">
+    <h2>doing validation using the ngmdl</h2>
+<input type="email" ng-model="text" name="myAddress">
+<span ng-show="myForm.myAddress.$error.email">Not valid email.</span>
+<input type="text" ng-model="myText" name="myMail" required>
+{{myForm.myMail.$valid}}
+{{myForm.myMail.$dirty}}
+{{myForm.myMail.$touched}}
+</form>
+</body>
+</html>
