@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Services in Angularjs</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <h2>Example for the $location Service , due to croos orgin issue ,impleneted this example in visual studio</h2>
+        <span>{{locationName}}</span>
+    </div>
+    <div ng-controller="httpGetcontroller">
+        <h2>Example for the $http Service</h2>
+        <div>
+            {{myGetData}}
+        </div>
+    </div>
+    <div ng-controller="timeoutcontroller">
+        <h2>$timeout example</h2>
+        <span>{{msg}}</span>
+    </div>
+    <div ng-controller="intervalController">
+        <h2>Interval example</h2>
+        The time is: {{dateTime}}
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+app.Service("myService",function()
+{
+    
+})
+
+        app.controller("myController", function ($scope, $location) {
+            $scope.locationName = $location.absUrl();
+
+        });
+        app.controller("httpGetcontroller", function ($scope, $http) {
+
+            // $http.get("http://localhost:62747/").then(function (response) {
+            //     $scope.myGetData = response.data;
+            // });
+        });
+        app.controller("timeoutcontroller", function ($scope, $timeout) {
+            $scope.msg = "Hello world !";
+            $timeout(function () {
+                $scope.msg = "How are you today ?";
+            }, 2000);
+        });
+        app.controller("intervalController", function ($scope, $interval) {
+            $scope.dateTime = new Date().toLocaleTimeString();
+            $interval(function () {
+                $scope.dateTime = new Date().toLocaleTimeString();
+            }, 1000)
+
+        });
+        
+    </script>
+</body>
+
+</html>
