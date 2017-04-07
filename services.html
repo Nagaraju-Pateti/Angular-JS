@@ -28,22 +28,44 @@
         <h2>Interval example</h2>
         The time is: {{dateTime}}
     </div>
-    <script>
+    <div ng-controller="customServiceController">
+        <p>Please enter value: <input type="text" ng-change="txtChange(inputVal)" ng-model="inputVal" > </p>
+        <p>entered value in uppercase :<span>{{myVal}}</span></p>
+        
+        <ul>
+            <li ng-repeat="x in names">{{x.name | myFilterForService}}</li>
+        </ul>
+    </div>
+    <script> 
         var app = angular.module("myApp", []);
-app.Service("myService",function()
+        app.service("myService", function () {
+            this.myFun = function (x) {
+                
+                return x.toUpperCase();
+            };
+        });
+app.filter("myFilterForService",['myService',function(myService){
+return function(y)
 {
+   
+return myService.myFun(y);
+}
 
-});
-
+}]);
         app.controller("myController", function ($scope, $location) {
             $scope.locationName = $location.absUrl();
 
         });
         app.controller("httpGetcontroller", function ($scope, $http) {
 
-            // $http.get("http://localhost:62747/").then(function (response) {
-            //     $scope.myGetData = response.data;
-            // });
+            $http.get("http://tutorgirish.com/CoursesList.php").then(function (response) {
+                $scope.myGetData = response.data;
+            });
+
+
+
+
+
         });
         app.controller("timeoutcontroller", function ($scope, $timeout) {
             $scope.msg = "Hello world !";
@@ -58,7 +80,23 @@ app.Service("myService",function()
             }, 1000)
 
         });
-        
+        app.controller("customServiceController", function ($scope, myService) {
+            $scope.names = [
+                { name: 'Jani', country: 'Norway', sal: '90' },
+                { name: 'Carl', country: 'Sweden', sal: '100' },
+                { name: 'Margareth', country: 'England', sal: '70' },
+                { name: 'Hege', country: 'Norway', sal: '50' },
+                { name: 'Joe', country: 'Denmark', sal: '70' },
+                { name: 'Gustav', country: 'Sweden', sal: '40' },
+                { name: 'Birgit', country: 'Denmark', sal: '120' },
+                { name: 'Mary', country: 'England', sal: '80' },
+                { name: 'Kai', country: 'Norway', sal: '140' }
+            ];
+
+           $scope.txtChange=function(test){
+            $scope.myVal = myService.myFun(test)
+           }
+        });
     </script>
 </body>
 
