@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filters Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="personController">
+    <p>upper case filter example : {{person.firstname|uppercase}} {{person.lastname}}</p>
+    <p>lower case case filter example : {{person.firstname}} {{person.lastname|lowercase}}</p>
+    <h2>example for the order by Filter and currency filter</h2>
+    <ul>
+        <li ng-repeat="x in names | orderBy:'country'">
+            name: {{x.name+' country: '+x.country}} salary : {{x.sal|currency}}
+        </li>
+    </ul>
+    <div>
+        <h2>filtering the list which contains the 'a'</h2>
+        <ul>
+            <li ng-repeat="x in names| filter:{name:'a'}">
+                {{x.name}}
+            </li>
+        </ul>
+        <h2>filtering the list which not contains the 'a'</h2>
+        <ul>
+            <li ng-repeat="x in names| filter:{name:'!a'}">
+                {{x.name}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2>filtering the list based on the user input</h2>
+        <p>Please enter person name: </p><input type="text" ng-model="search">
+        <ul>
+            <li ng-repeat="x in names | filter:{name: search }">
+                {{x.name}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2>html table example with sorting</h2>
+        <table border="1" width="100%">
+            <thead>
+                <th ng-click="Order('name')">Name</th>
+                <th ng-click="Order('country')">Country</th>
+                <th ng-click="Order('sal')">Salary</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in names | orderBy:orderText">
+                    <td>{{x.name}}</td>
+                    <td>{{x.country}}</td>
+                    <td>{{x.sal|currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Custom Filters in angularjs</h2>
+        <ul>
+            <li ng-repeat="x in names">
+                {{x.name | myFilter}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.filter("myFilter", function () {
+
+            return function (x) {
+           
+                               
+                var lengthString=x.length;
+
+               var lasUpper =  x[lengthString-1].toUpperCase();
+                var xname= x.substr(0,lengthString-1);
+                return xname+lasUpper;
+            }
+        });
+        app.controller("personController", function ($scope) {
+            $scope.person = { firstname: 'nagaraju', lastname: 'PATETI' };
+
+            $scope.names = [
+                { name: 'Jani', country: 'Norway', sal: '90' },
+                { name: 'Carl', country: 'Sweden', sal: '100' },
+                { name: 'Margareth', country: 'England', sal: '70' },
+                { name: 'Hege', country: 'Norway', sal: '50' },
+                { name: 'Joe', country: 'Denmark', sal: '70' },
+                { name: 'Gustav', country: 'Sweden', sal: '40' },
+                { name: 'Birgit', country: 'Denmark', sal: '120' },
+                { name: 'Mary', country: 'England', sal: '80' },
+                { name: 'Kai', country: 'Norway', sal: '140' }
+            ];
+
+            $scope.Order = function (x) {
+                $scope.orderText = x;
+            }
+        });
+    </script>
+</body>
+
+</html>
