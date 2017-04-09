@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Validations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <form action="" name="myForm">
+<input type="text" name="inPut" ng-model="inPut" required my-directive>
+{{myForm.inPut.$valid}}
+    </form>
+    <script>
+        var app = angular.module("myApp", []);
+        app.directive("myDirective", function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, element, attr, mCtrl) {
+                    function myValidation(value) {
+                        if (value.indexOf('e') > -1) {
+                            mCtrl.$setValidity('CharE', true);
+                        } else {
+                            mCtrl.$setValidity('CharE', false);
+                        }
+                        return value;
+                    }
+                    mCtrl.$parsers.push(myValidation);
+                   
+                }
+            };
+
+        });
+
+    </script>
+</body>
+
+</html>

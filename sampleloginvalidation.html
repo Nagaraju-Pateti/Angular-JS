@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sample login validations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
+</head>
+<body ng-app="">
+    <form action="" name="myForm" novalidate >
+        <div style="width:400px;height:250px;margin:auto;background-color:lightblue ; border:solid 1px black">
+        <div style="padding:19%">
+            <span>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="email" ng-model="email" type="email" required>  
+            <span style="color:red" ng-show="myForm.email.$dirty&&myForm.email.$invalid">
+                <span ng-show="myForm.email.$error.required">Email is required.</span>
+                    <span ng-show="myForm.email.$error.email">Invalid email.</span>
+            </span>
+            <p></p>
+          <span>Username:</span><input name="username" ng-model="username" type="text" required> 
+          <span style="color:red" ng-show="myForm.username.$invalid&&myForm.username.$dirty">Username is required</span> 
+          <p></p>
+           &nbsp;<span>Password:</span><input name="password" ng-model="password" type="password" required> 
+            <p></p>
+            <input style="margin-left:53%" type="submit" ng-disabled="myForm.$invalid" value="Login">
+            </div>
+       </div>
+    </form>
+</body>
+</html>
