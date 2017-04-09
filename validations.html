@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style>
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <p>Try to enter value in input field. </p>
+    <form action="" name="myForm">
+        <input type="text" name="myInput"  ng-model="myInput" required> 
+        <h2>Input validations</h2>
+   <p>  $valid status: {{myForm.myInput.$valid}}</p> 
+    <p>  $invalid status: {{myForm.myInput.$invalid}}</p> 
+   <p>  $touched status:  {{myForm.myInput.$touched}}</p> 
+   <p>$pristine status:    {{myForm.myInput.$pristine}}</p> 
+   <p>$dirty status: {{myForm.myInput.$dirty}}</p> 
+   <p>  $untouched status:  {{myForm.myInput.$untouched }}</p> 
+  <h2>form Validations</h2>
+   <p>  $valid status: {{myForm.$valid}}</p> 
+    <p>  $invalid status: {{myForm.$invalid}}</p> 
+   <p>  $touched status:  {{myForm.$touched}}</p> 
+   <p>$pristine status:    {{myForm.$pristine}}</p> 
+   <p>$dirty status: {{myForm.$dirty}}</p> 
+   <p>  $untouched status:  {{myForms.$untouched }}</p> 
+    <p>  $submitted status:  {{myForm.$submitted}}</p> 
+    <h2>Show an error message if the field has been touched AND is empty:</h2>
+    <input type="text" name="valInput" ng-model="valInput" required>
+<span ng-show="myForm.valInput.$touched&&myForm.valInput.$invalid"> input touched and invalid </span>
+    </form>
+
+     <script>
+         var app=angular.module("myApp",[]);
+         app.controller("myController",function($scope){
+
+
+         })
+     </script>
+</body>
+</html>

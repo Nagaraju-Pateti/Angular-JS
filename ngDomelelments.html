@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ngDOM elements</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="btStatus=true">
+    <div>
+        <h2>ngDisable and ngModel Example</h2>
+<button ng-disabled="btStatus">Clieck me !</button>
+<input type="checkbox" ng-model="btStatus">
+<p>checkbox status : {{btStatus}}</p>
+<h2>Example for ng-show</h2>
+<p ng-show="btStatus"> I'm visible</p>
+<h2>Example for ng-hide</h2>
+<p ng-hide="btStatus"> I'm visible</p>
+    </div>
+</body>
+</html>
