@@ -1,0 +1,28 @@
+<!DOCTYPE html  >
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watchers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body  ng-app="myApp" ng-controller="myController">
+    Enter Message: <input type="text" name="" id="" ng-model="message">
+  
+    <p>New Message: {{newMessage}}</p>
+    <p> Old Message: {{oldMessage}}</p>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myController",function($scope){
+$scope.$watch("message",function(newValue,oldValue){
+$scope.newMessage=newValue;
+$scope.oldMessage=oldValue;
+});
+    });
+</script>
+</body>
+
+</html>
