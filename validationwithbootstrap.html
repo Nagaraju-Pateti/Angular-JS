@@ -42,11 +42,21 @@
     </span>
 </div>
 </div>
+<input type="button" ng-disabled="myForm.$invalid" value="Save" ng-click="FormSubmit()" class="btn btn-primary col-sm-offset-3">
+<input type="button" value="Reset" class="btn btn-default">
    </form>
     <script>
         var app=angular.module("myApp",[]);
-        app.controller("myController",function($scope){
-
+        app.controller("myController",function($scope,$log){
+$scope.FormSubmit=function()
+{
+if(!$scope.myForm.firstname.$modelValue)    
+{
+$scope.myForm.firstname.$setValidity('required',false);
+$scope.myForm.firstname.$setDirty();
+                    
+}
+};
 
         });
     </script>
